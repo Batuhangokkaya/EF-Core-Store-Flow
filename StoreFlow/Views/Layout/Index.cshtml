@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("_HeadDashboardComponentPartial")
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        @await Component.InvokeAsync("_NavbarDashboardComponentPartial")
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+            @await Component.InvokeAsync("_ThemeSettingsWrapperDashboardComponentPartial")
+            @await Component.InvokeAsync("_RightSidebarDashboardComponentPartial")
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            @await Component.InvokeAsync("_SidebarDashboardComponentPartial")
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                    <!-- partial:partials/_footer.html -->
+                    @await Component.InvokeAsync("_FooterDashboardComponentPartial")
+                </div>
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+    </div>
+    <!-- container-scroller -->
+    <!-- JS -->
+    @await Component.InvokeAsync("_ScriptDashboardComponentPartial")
+    <!-- End custom js for this page-->
+</body>
+</html>
