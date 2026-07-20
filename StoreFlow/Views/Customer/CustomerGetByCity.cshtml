@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Şehre Göre Müşteri Sorgulama";
+    Layout            = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Şehirde Müşteri Var mı?</h4>
+                <form class="forms-sample" method="get" asp-action="CustomerGetByCity">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Şehir Adı Giriniz</label>
+                        <input type="text" class="form-control" id="exampleInputName1" name="city" placeholder="Şehir Adını Yazınız" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Müşteriyi Kontrol Et</button>
+                </form>
+                <br />
+                <div class="alert alert-success">@ViewBag.Message</div>
+            </div>
+        </div>
+    </div>
+</div>
