@@ -13,3 +13,23 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="~/Melody-Premium-Bootstrap-Admin-Dashboard-Template/js/dashboard.js"></script>
+<script>
+    const orderCountInput = document.getElementById("OrderCount");
+    const unitPriceInput  = document.getElementById("UnitPrice");
+    const totalPriceInput = document.getElementById("TotalPrice");
+
+    orderCountInput.addEventListener("change", function () {
+
+        const orderCount = parseFloat(orderCountInput.value);
+        const unitPrice = parseFloat(unitPriceInput.value.replace(",", "."));
+
+        if (orderCount <= 0) {
+            alert("Ürün adedi 0 veya 0'dan küçük olamaz.");
+            orderCountInput.value = 1;
+            return;
+        }
+
+        const totalPrice = unitPrice * orderCount;
+        totalPriceInput.value = totalPrice.toFixed(2);
+    });
+</script>

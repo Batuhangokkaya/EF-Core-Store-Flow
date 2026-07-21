@@ -79,7 +79,7 @@ namespace StoreFlow.Controllers
             return RedirectToAction("ProductList", "Product");
         }
 
-        public IActionResult First5ProductList()
+        public IActionResult First5Product()
         {
             var values = _context.Products
                 .Include(x => x.Category)
@@ -88,7 +88,7 @@ namespace StoreFlow.Controllers
             return View(values);
         }
 
-        public IActionResult Skip4ProductList()
+        public IActionResult Skip4Product()
         {
             var values = _context.Products
                 .Include(x => x.Category)

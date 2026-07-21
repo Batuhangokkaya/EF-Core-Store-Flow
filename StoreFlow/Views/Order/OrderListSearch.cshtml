@@ -12,8 +12,8 @@
             <div class="card-body">
                 <h3 class="card-title">Sipariş Listesi</h3>
                 <div class="table-responsive">
-                    <h2>Duruma Göre Arama İşlemi</h2>
                     <form class="form-sample" method="get" asp-action="OrderListSearch">
+                        <label>Duruma Göre Arama İşlemi</label>
                         <input type="text" class="form-control" name="name" placeholder="Örnek: Taşıma Durumunda..." />
                         <br /><br />
                         <label>Filtre Tipi</label>
@@ -21,7 +21,9 @@
                             <option value="Start">Bu harflerle başlıyorsa</option>
                             <option value="End">Bu harflerle bitiyorsa</option>
                         </select>
+                        <div style="text-align: end;">
                         <button type="submit" class="btn btn-primary mt-2">Ara</button>
+                        </div>
                     </form>
                     <table class="table">
                         <thead>
@@ -47,8 +49,8 @@
                                     <td>@order.OrderCount</td>
                                     <td style="font-family: Calibri">@order.UnitPrice₺</td>
                                     <td>@order.Status</td>
-                                    <td><a href="/Order/DeleteOrder/@order.OrderID" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Order/UpdateOrder/@order.OrderID" class="btn btn-warning">Güncelle</a></td>
+                                    <td><a href="/Order/AsyncDeleteOrder/@order.OrderID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Order/AsyncUpdateOrder/@order.OrderID" class="btn btn-warning">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
