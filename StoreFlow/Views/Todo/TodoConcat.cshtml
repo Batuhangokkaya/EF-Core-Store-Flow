@@ -1,0 +1,42 @@
+﻿@model List<Todo>
+@{
+    ViewData["Title"] = "Yapılacaklar Hatırlatıcı Birleştirme Sayfası";
+    Layout            = "~/Views/Layout/Index.cshtml";
+
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">apılacaklar Listesi</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Açıklama</th>
+                                <th>Öncelik</th>
+                                <th>Durum</th>
+                                <th>Açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var todo in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@todo.Description</td>
+                                    <td>@todo.Priority</td>
+                                    <td>@todo.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

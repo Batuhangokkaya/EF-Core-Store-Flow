@@ -1,0 +1,39 @@
+﻿@model List<CustomerCityGroup>
+@{
+    ViewData["Title"] = "Müşteri Şehir Grub Listesi";
+    Layout            = "~/Views/Layout/Index.cshtml";
+
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Müşteri Şehir Listesi</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Şehir Adı</th>
+                                <th>Müşteri Sayısı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var customerCityGroup in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@customerCityGroup.City</td>
+                                    <td>@customerCityGroup.CustomerCount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -97,5 +97,44 @@ namespace StoreFlow.Controllers
                 .ToList();
             return View(values);
         }
+
+        [HttpGet]
+        public IActionResult CreateProductWithAttach()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateProductWithAttach(Product product)
+        {
+            var category = new Category { CategoryID = 1 };
+            _context.Categories.Attach(category);
+
+            var productValue = new Product
+            {
+                Name     = product.Name,
+                Price    = product.Price,
+                Stock    = product.Stock,
+                Category = category,
+            };
+
+            _context.Products.Add(productValue);
+            _context.SaveChanges();
+
+            return RedirectToAction("ProductList");
+        }
+
+        public IActionResult ProductLongCount()
+        {
+            var value     = _context.Products.LongCount();
+            ViewBag.value = value;
+
+            var lastProduct     = _context.Products
+                .OrderBy(x => x.ProductID)
+                .Last();
+            ViewBag.LastProduct = lastProduct.Name;
+
+            return View();
+        }
     }
 }

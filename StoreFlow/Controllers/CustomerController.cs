@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StoreFlow.Context;
 using StoreFlow.Entities;
+using StoreFlow.Models;
 
 namespace StoreFlow.Controllers
 {
@@ -46,6 +47,73 @@ namespace StoreFlow.Controllers
             }
             
             return View();
+        }
+
+        public IActionResult CustomerListByCity()
+        {
+            var groupedCustomers = _context.Customers
+                .GroupBy(x => x.City)
+                .ToList();
+
+            return View(groupedCustomers);
+        }
+
+        public IActionResult CustomersByCityCount()
+        {
+            var query =
+                from c in _context.Customers
+                group c by c.City into cityGroup
+                select new CustomerCityGroup
+                {
+                    City = cityGroup.Key,
+                    CustomerCount = cityGroup.Count()
+                };
+
+            var model = query.OrderByDescending(x => x.CustomerCount).ToList();
+
+            return View(model);
+        }
+
+        public IActionResult CustomersCityList()
+        {
+            var values = _context.Customers
+                .Select(x => x.City)
+                .Distinct()
+                .ToList();
+            return View(values);
+        }
+
+        public IActionResult ParallelCustomers()
+        {
+            var customers = _context.Customers.ToList();
+            var result    = customers
+                .AsParallel()
+                .Where(x => x.City.StartsWith("K", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            return View(result);
+        }
+
+        public IActionResult CustomerListExceptCityKahramanmaras()
+        {
+            // Except
+            /*
+            var customers = _context.Customers.ToList();
+            var customersListInKahramanmaras = _context.Customers
+                .Where(c => c.City == "Istanbul")
+                .ToList();
+
+            var result = customers.Except(customersListInKahramanmaras).ToList();
+            */
+
+            var customers                    = _context.Customers.ToList();
+            var customersListInKahramanmaras = _context.Customers
+                .Where(x => x.City == "Kahramanmaraş")
+                .Select(x => x.CustomerID)
+                .ToList();
+
+            var result = customers.ExceptBy(customersListInKahramanmaras, x => x.CustomerID).ToList();
+
+            return View(result);
         }
 
         [HttpGet]

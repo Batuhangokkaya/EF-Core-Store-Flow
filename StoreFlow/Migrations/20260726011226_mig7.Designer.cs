@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreFlow.Context;
 
@@ -11,9 +12,11 @@ using StoreFlow.Context;
 namespace StoreFlow.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20260726011226_mig7")]
+    partial class mig7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,41 +101,6 @@ namespace StoreFlow.Migrations
                     b.HasKey("CustomerID");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("StoreFlow.Entities.Message", b =>
-                {
-                    b.Property<int>("MessageID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageID"));
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Detail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SenderImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SenderNameSurname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MessageID");
-
-                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("StoreFlow.Entities.Order", b =>
