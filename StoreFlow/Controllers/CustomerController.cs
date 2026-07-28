@@ -105,6 +105,8 @@ namespace StoreFlow.Controllers
             var result = customers.Except(customersListInKahramanmaras).ToList();
             */
 
+
+            // ExceptBy
             var customers                    = _context.Customers.ToList();
             var customersListInKahramanmaras = _context.Customers
                 .Where(x => x.City == "Kahramanmaraş")
@@ -114,6 +116,58 @@ namespace StoreFlow.Controllers
             var result = customers.ExceptBy(customersListInKahramanmaras, x => x.CustomerID).ToList();
 
             return View(result);
+        }
+
+        public IActionResult CustomerListWithDefaultIfEmpty()
+        {
+            var customers = _context.Customers
+                .Where(x => x.City == "Kocaeli")
+                .ToList()
+                .DefaultIfEmpty(new Customer
+                {
+                    CustomerID = 0,
+                    Name       = "Kayıt Yok",
+                    Surname    = "---------",
+                    City       = "Kocaeli"
+                })
+                .ToList();
+
+            return View(customers);
+        }
+
+        public IActionResult CustomerIntersectByCity()
+        {
+            var values1 = _context.Customers
+                .Where(x => x.City == "İstanbul")
+                .Select(x => x.Name + " " + x.Surname)
+                .ToList();
+
+
+            var values2 = _context.Customers
+                .Where(x => x.City == "Trabzon")
+                .Select(x => x.Name + " " + x.Surname)
+                .ToList();
+
+            var intersect = values1.Intersect(values2)
+                .ToList();
+
+            return View(intersect);
+        }
+
+        public IActionResult CustomerCastExample()
+        {
+            var values = _context.Customers.ToList();
+            ViewBag.Customers = values;
+
+            return View();
+        }
+
+        public IActionResult CustomerOfTypeExample()
+        {
+            var values = _context.Customers.ToList();
+            ViewBag.Customers = values;
+
+            return View();
         }
 
         [HttpGet]

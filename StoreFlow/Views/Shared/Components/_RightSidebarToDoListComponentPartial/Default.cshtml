@@ -1,0 +1,21 @@
+﻿@model List<Todo>
+<div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+    <div class="list-wrapper px-3">
+        <ul class="d-flex flex-column-reverse todo-list">
+            @foreach (var todo in Model)
+            {
+
+                <li class=@(todo.Status == false ? "completed" : "")>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="checkbox" type="checkbox">
+                            @todo.Description
+                        </label>
+                    </div>
+                    <i class="remove fa fa-times-circle"></i>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<!-- To do section tab ends -->

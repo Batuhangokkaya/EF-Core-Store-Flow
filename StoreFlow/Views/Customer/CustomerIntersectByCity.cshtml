@@ -1,0 +1,13 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Kesişim Kümesi İstanbul - Trabzon Olan Müşteriler";
+    Layout            = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Kesişim Kümesi İstanbul - Trabzon Olan Müşteriler</h1>
+<ul>
+    @foreach (var customer in Model)
+    {
+        <li>@customer</li>
+    }
+</ul>

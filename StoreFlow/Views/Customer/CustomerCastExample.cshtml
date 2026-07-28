@@ -1,0 +1,11 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Müşteri Cast Örneği";
+    Layout            = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Müşteri Cast Örneği</h1>
+@foreach(var cast in ((IEnumerable<object>)ViewBag.Customers).Cast<Customer>())
+{
+    <p>@cast.Name @cast.Surname - @cast.City</p>
+}
