@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace StoreFlow.ViewComponents
+namespace StoreFlow.ViewComponents.LayoutComponents
 {
-    public class _FooterDashboardComponentPartial : ViewComponent
+    public class _LayoutScriptsDashboardComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

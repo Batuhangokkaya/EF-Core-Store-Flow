@@ -22,7 +22,7 @@
                 <div class="content-wrapper">
                     @RenderBody()
                     <!-- partial:partials/_footer.html -->
-                    @await Component.InvokeAsync("_FooterDashboardComponentPartial")
+                    @await Component.InvokeAsync("_LayoutFooterDashboardComponentPartial")
                 </div>
             </div>
             <!-- page-body-wrapper ends -->
@@ -30,7 +30,7 @@
     </div>
     <!-- container-scroller -->
     <!-- JS -->
-    @await Component.InvokeAsync("_ScriptsDashboardComponentPartial")
+    @await Component.InvokeAsync("_LayoutScriptsDashboardComponentPartial")
     <!-- End custom js for this page-->
 </body>
 </html>

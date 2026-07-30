@@ -1,0 +1,36 @@
+﻿@model List<Message>
+
+<li class="nav-item dropdown">
+    <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-envelope mx-0"></i>
+        <span class="count">@ViewBag.MessageCount</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+        <div class="dropdown-item">
+            <p class="mb-0 font-weight-normal float-left">
+                Toplam @ViewBag.MessageCount okunmamış mesajınız var.
+            </p>
+            <a href="/Message/Index" class="badge badge-info badge-pill float-right">Tümünü Gör</a>
+        </div>
+        <div class="dropdown-divider"></div>
+        @foreach (var message in Model)
+        {
+            TimeSpan dateDifference = DateTime.Now - message.DateTime;
+            <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="@message.SenderImageURL" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow">
+                    <h6 class="preview-subject ellipsis font-weight-medium">
+                        @message.SenderNameSurname
+                        <span class="float-right font-weight-light small-text">@dateDifference.Days gün önce</span>
+                    </h6>
+                    <p class="font-weight-light small-text">
+                        @message.Title
+                    </p>
+                </div>
+            </a>
+            <div class="dropdown-divider"></div>
+        }
+    </div>
+</li>

@@ -1,0 +1,43 @@
+﻿@model List<Todo>
+
+<li class="nav-item dropdown">
+    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+        <i class="fas fa-bell mx-0"></i>
+        <span class="count">@ViewBag.TodoTotalCount bildiriminiz var</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+        <a class="dropdown-item">
+            <p class="mb-0 font-weight-normal float-left">
+                Toplam @ViewBag.TodoTotalCount bildiriminiz var.
+            </p>
+            <button type="button" class="nav-settings navbar-toggler navbar-toggler-right badge badge-pill badge-warning float-right" data-toggle="offcanvas"><span>Tümünü Gör</span></button>
+        </a>
+        <div class="dropdown-divider"></div>
+        @foreach (var todo in Model)
+        {
+            string bgColor = todo.Priority switch
+            {
+                "Birincil"  => "bg-danger",
+                "İkincil"   => "bg-warning",
+                "Üçüncül"   => "bg-success",
+                "Dördüncül" => "bg-primary",
+                _           => "bg-info"
+            };
+
+            <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <div class="preview-icon @bgColor">
+                        <i class="fas fa-exclamation-circle mx-0"></i>
+                    </div>
+                </div>
+                <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-medium">@(todo.Description.Length > 30 ? todo.Description.Substring(0, 30) + "..." : todo.Description)</h6>
+                    <p class="font-weight-light small-text">
+                        @todo.Priority
+                    </p>
+                </div>
+            </a>
+            <div class="dropdown-divider"></div>
+        }
+    </div>
+</li>
