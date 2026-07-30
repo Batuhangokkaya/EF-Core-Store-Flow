@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StoreFlow.Context;
 using StoreFlow.Entities;
+using StoreFlow.Models;
 
 namespace StoreFlow.Controllers
 {
@@ -76,6 +77,21 @@ namespace StoreFlow.Controllers
                 .OrderByDescending(x => x.OrderID)
                 .ToListAsync();
             return View(values);
+        }
+
+        public IActionResult OrderListWithCustomerGroup()
+        {
+            var result = from customer in _context.Customers
+                         join order in _context.Orders
+                         on customer.CustomerID equals order.CustomerID
+                         into OrderGroup
+                         select new CustomerOrderViewModel
+                         {
+                             CustomerFullName = customer.Name + " " + customer.Surname,
+                             Orders           = OrderGroup.ToList()
+                         };
+
+            return View(result.ToList());
         }
 
         [HttpGet]

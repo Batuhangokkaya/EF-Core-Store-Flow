@@ -170,6 +170,21 @@ namespace StoreFlow.Controllers
             return View();
         }
 
+        public IActionResult CustomerListWithIndex()
+        {
+            var customer = _context.Customers
+                .ToList()
+                .Select((customer, index) => new
+                {
+                    SiraNo = index + 1,
+                    customer.Name,
+                    customer.Surname,
+                    customer.City
+                }).ToList();
+
+            return View(customer);
+        }
+
         [HttpGet]
         public IActionResult CreateCustomer()
         {

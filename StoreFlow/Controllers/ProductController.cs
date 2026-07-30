@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StoreFlow.Context;
 using StoreFlow.Entities;
+using StoreFlow.Models;
 
 namespace StoreFlow.Controllers
 {
@@ -135,6 +136,22 @@ namespace StoreFlow.Controllers
             ViewBag.LastProduct = lastProduct.Name;
 
             return View();
+        }
+
+        public IActionResult ProductListWithCategory()
+        {
+            var result = from c in _context.Categories
+                         join p in _context.Products
+                         on
+                         c.CategoryID equals p.CategoryID
+                         select new ProductWithCategoryViewModel
+                         {
+                             ProductName  = p.Name,
+                             ProductStock = p.Stock,
+                             CategoryName = c.Name
+                         };
+            
+            return View(result.ToList());
         }
     }
 }
