@@ -29371,3 +29371,11 @@ div.tagsinput span.tag a {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+.custom-sidebar .sub-menu {
+    padding-left: 20px !important;
+}
+
+.custom-sidebar .sub-menu .nav-item .nav-link {
+    padding-left: 20px !important;
+    padding-right: 10px !important;
+}

@@ -10,12 +10,22 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Tekrarsız Şehir Listesi</h3>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Tekrarsız Şehir Listesi</h3>
+                        <p class="text-muted mb-0">
+                            Sistemde kayıtlı müşterilere ait tekrar etmeyen şehirler listelenmektedir.
+                        </p>
+                    </div>
+                    <span class="badge badge-primary p-2">
+                        @Model.Count Şehir
+                    </span>
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th style="width: 5%;">#</th>
                                 <th>Şehir Adı</th>
                             </tr>
                         </thead>

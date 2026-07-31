@@ -1,10 +1,25 @@
 ﻿@model List<CustomerOrderViewModel>
 @{
-    ViewData["Title"] = "Müşteri Sipariş Listesi";
+    ViewData["Title"] = "Müşterilere Göre Sipariş Listesi";
     Layout            = "~/Views/Layout/Index.cshtml";
 }
 
-<h1>Müşteri Sipariş Listesi</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="mb-1">Müşterilere Göre Sipariş Listesi</h3>
+        <p class="text-muted mb-0">
+            Müşteriler, kendilerine ait siparişlerle Group Join işlemi kullanılarak birlikte listelenmektedir..
+        </p>
+    </div>
+    <div class="d-flex align-items-center">
+        <span class="badge badge-primary p-2 mr-2">
+            GroupJoin()
+        </span>
+        <span class="badge badge-info p-2">
+            @Model.Count Müşteri
+        </span>
+    </div>
+</div>
 @foreach(var customerOrderVM in Model)
 {
     <div class="card mb-3">

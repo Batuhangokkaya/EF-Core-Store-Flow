@@ -1,6 +1,6 @@
 ﻿@model List<Product>
 @{
-    ViewData["Title"] = "İlk 4 Ürünü Atlayıp Sonraki 10 Ürünün Listesi";
+    ViewData["Title"] = "İlk 4 Ürünü Atla";
     Layout = "~/Views/Layout/Index.cshtml";
 
     int count = 0;
@@ -10,15 +10,30 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">İlk 4 Ürünü Atlayıp Sonraki 10 Ürünü Listeleme</h3>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">İlk 4 Ürünü Atla</h3>
+                        <p class="text-muted mb-0">
+                            Skip(4) metodu kullanılarak ilk dört ürün atlanmış ve kalan ürünler listelenmektedir.
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="badge badge-primary p-2 mr-2">
+                            Skip(4)
+                        </span>
+                        <span class="badge badge-info p-2">
+                            @Model.Count Ürün
+                        </span>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Ürün Adı</th>
-                                <th>Fiyat</th>
-                                <th>Kategori Adı</th>
+                                <th style="Width: 23%;">#</th>
+                                <th style="Width: 23%;">Ürün Adı</th>
+                                <th style="Width: 23%;">Fiyat</th>
+                                <th style="Width: 23%;">Kategori Adı</th>
                                 <th>Stok Sayısı</th>
                             </tr>
                         </thead>
@@ -32,13 +47,10 @@
                                     <td style="font-family: Calibri">@product.Price₺</td>
                                     <td>@product.Category.Name</td>
                                     <td>@product.Stock</td>
-                                    <td><a href="/product/DeleteProduct/@product.ProductID" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/product/UpdateProduct/@product.ProductID" class="btn btn-warning">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/product/CreateProduct" class="btn btn-primary">Yeni Ürün Girişi</a>
                 </div>
             </div>
         </div>

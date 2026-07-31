@@ -1,17 +1,59 @@
 ﻿@model List<IGrouping<string, Customer>>
+
 @{
-    ViewData["Title"] = "Müşteri Şehir Grub Listesi";
+    ViewData["Title"] = "Şehre Göre Müşteri Listesi";
     Layout            = "~/Views/Layout/Index.cshtml";
 }
 
-<h2>Şehre Göre Müşteri Listesi</h2>
-@foreach(var group in Model)
-{
-    <h4>@group.Key</h4>
-    <ul>
-        @foreach (var customer in group)
-        {
-            <li>@customer.Name @customer.Surname</li>
-        }
-    </ul>
-}
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Şehre Göre Müşteri Listesi</h3>
+                        <p class="text-muted mb-0">
+                            Müşteriler şehir bilgilerine göre gruplandırılmıştır.
+                        </p>
+                    </div>
+                    <span class="badge badge-primary p-2">
+                        @Model.Count Şehir
+                    </span>
+                </div>
+                <div class="row">
+                    @foreach (var cityGroup in Model)
+                    {
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
+                            <div class="card border h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <h5 class="mb-0">
+                                                @cityGroup.Key
+                                            </h5>
+                                        </div>
+                                        <span class="badge badge-outline-primary">
+                                            @cityGroup.Count() Müşteri
+                                        </span>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        @foreach (var customer in cityGroup)
+                                        {
+                                            <li class="list-group-item px-0 d-flex align-items-center">
+                                                <i class="fas fa-user text-muted mr-2"></i>
+
+                                                <span>
+                                                    @customer.Name @customer.Surname
+                                                </span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

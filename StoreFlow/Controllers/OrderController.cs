@@ -143,7 +143,7 @@ namespace StoreFlow.Controllers
             var products = await _context.Products
                 .Select(x => new SelectListItem
                 {
-                    Text = x.Name,
+                    Text  = x.Name,
                     Value = x.ProductID.ToString()
                 })
                 .ToListAsync();
@@ -152,7 +152,7 @@ namespace StoreFlow.Controllers
             var customers = await _context.Customers
                 .Select(x => new SelectListItem
                 {
-                    Text = x.Name + " " + x.Surname,
+                    Text  = x.Name + " " + x.Surname,
                     Value = x.CustomerID.ToString()
                 })
                 .ToListAsync();

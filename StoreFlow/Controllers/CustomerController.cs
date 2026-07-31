@@ -15,6 +15,12 @@ namespace StoreFlow.Controllers
             _context = context;
         }
 
+        public IActionResult ListCustomer()
+        {
+            var values = _context.Customers.ToList();
+            return View(values);
+        }
+
         public IActionResult CustomerListOrderByCustomerName()
         {
             var values = _context.Customers
@@ -93,8 +99,16 @@ namespace StoreFlow.Controllers
             return View(result);
         }
 
-        public IActionResult CustomerListExceptCityKahramanmaras()
+        public IActionResult CustomerListExceptCity(string city)
         {
+            ViewBag.CityList = _context.Customers
+                .Where(x => x.City != null && x.City != "")
+                .Select(x => x.City)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+            ViewBag.SelectedCity = city;
+
             // Except
             /*
             var customers = _context.Customers.ToList();
@@ -105,15 +119,20 @@ namespace StoreFlow.Controllers
             var result = customers.Except(customersListInKahramanmaras).ToList();
             */
 
-
             // ExceptBy
-            var customers                    = _context.Customers.ToList();
-            var customersListInKahramanmaras = _context.Customers
-                .Where(x => x.City == "Kahramanmaraş")
+            var customers = _context.Customers.ToList();
+
+            if (string.IsNullOrWhiteSpace(city))
+            {
+                return View(customers);
+            }
+
+            var excludedCustomerIds = _context.Customers
+                .Where(x => x.City == city)
                 .Select(x => x.CustomerID)
                 .ToList();
 
-            var result = customers.ExceptBy(customersListInKahramanmaras, x => x.CustomerID).ToList();
+            var result = customers.ExceptBy(excludedCustomerIds, x => x.CustomerID).ToList();
 
             return View(result);
         }
@@ -141,7 +160,6 @@ namespace StoreFlow.Controllers
                 .Where(x => x.City == "İstanbul")
                 .Select(x => x.Name + " " + x.Surname)
                 .ToList();
-
 
             var values2 = _context.Customers
                 .Where(x => x.City == "Trabzon")
@@ -205,7 +223,7 @@ namespace StoreFlow.Controllers
         {
             _context.Customers.Add(customer);
             _context.SaveChanges();
-            return RedirectToAction("CustomerList", "Customer");
+            return RedirectToAction("ListCustomer", "Customer");
         }
 
         public IActionResult DeleteCustomer(int id)
@@ -213,7 +231,7 @@ namespace StoreFlow.Controllers
             var value = _context.Customers.Find(id);
             _context.Customers.Remove(value);
             _context.SaveChanges();
-            return RedirectToAction("CustomerList", "Customer");
+            return RedirectToAction("ListCustomer", "Customer");
         }
 
         [HttpGet]
@@ -222,7 +240,7 @@ namespace StoreFlow.Controllers
             var categories = _context.Categories
                 .Select(x => new SelectListItem
                 {
-                    Text = x.Name,
+                    Text  = x.Name,
                     Value = x.CategoryID.ToString()
                 })
                 .ToList();
@@ -237,7 +255,7 @@ namespace StoreFlow.Controllers
         {
             _context.Customers.Update(customer);
             _context.SaveChanges();
-            return RedirectToAction("CustomerList", "Customer");
+            return RedirectToAction("ListCustomer", "Customer");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@model List<Customer>
 @{
-    ViewData["Title"] = "Müşteri Listesi Paralel Metodu";
+    ViewData["Title"] = "Müşteri Listesi";
     Layout            = "~/Views/Layout/Index.cshtml";
 
     int count = 0;
@@ -12,21 +12,25 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                        <h3 class="mb-1">Paralel LINQ ile Müşteri Listesi</h3>
+                        <h3 class="mb-1">Müşteri Listesi</h3>
                         <p class="text-muted mb-0">
-                            Müşteriler AsParallel() metodu kullanılarak paralel olarak işlenmiş ve şehir adı "K" harfi ile başlayan kayıtlar listelenmiştir.
+                            Sistemde kayıtlı tüm müşteriler listelenmektedir.
                         </p>
                     </div>
                     <span class="badge badge-primary p-2">
-                        AsParallel()
+                        @Model.Count Müşteri
                     </span>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">#</th>
-                                <th>Şehir Adı</th>
+                                <th style="width: 25%;">#</th>
+                                <th style="width: 25%;">Müşteri Adı Soyadı</th>
+                                <th style="width: 25%;">Şehir</th>
+                                <th style="width: 25%;">Bakiye</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,11 +39,16 @@
                                 count++;
                                 <tr>
                                     <td>@count</td>
+                                    <td>@customer.Name @customer.Surname</td>
                                     <td>@customer.City</td>
+                                    <td style="font-family: Calibri;">@customer.Balance₺</td>
+                                    <td><a href="/Customer/DeleteCustomer/@customer.CustomerID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Customer/UpdateCustomer/@customer.CustomerID" class="btn btn-warning">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
+                    <a href="/Customer/CreateCustomer" class="btn btn-primary">Yeni Müşteri Girişi</a>
                 </div>
             </div>
         </div>

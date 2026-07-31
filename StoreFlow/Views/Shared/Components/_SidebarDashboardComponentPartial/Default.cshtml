@@ -1,6 +1,6 @@
 ﻿<!-- partial -->
 <!-- partial:partials/_sidebar.html -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas sidebar-offcanvas custom-sidebar" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -8,12 +8,8 @@
                     <img src="~/Melody-Premium-Bootstrap-Admin-Dashboard-Template/images/faces/face12.jpg" alt="image" />
                 </div>
                 <div class="profile-name">
-                    <p class="name">
-                        Hoşgeldin Batuhan
-                    </p>
-                    <p class="designation">
-                        Super Admin
-                    </p>
+                    <p class="name">Hoş geldin Batuhan</p>
+                    <p class="designation">Super Admin</p>
                 </div>
             </div>
         </li>
@@ -30,69 +26,207 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Category/CategoryList">
-                <i class="fas fa-tags menu-icon"></i>
+            <a class="nav-link" data-toggle="collapse" href="#categoryMenu" aria-expanded="false" aria-controls="categoryMenu">
+                <i class="fas fa-layer-group menu-icon"></i>
                 <span class="menu-title">Kategoriler</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="categoryMenu">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Category/CategoryList">
+                            Kategoriler Listesi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Category/ReverseCategory">
+                            Kategoriler (Ters Sıralama)
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Customer/CustomerListOrderByCustomerName">
+            <a class="nav-link" data-toggle="collapse" href="#customerMenu" aria-expanded="false" aria-controls="customerMenu">
                 <i class="fas fa-users menu-icon"></i>
-                <span class="menu-title">Müşteri Listesi (İsme Göre)</span>
+                <span class="menu-title">Müşteriler</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="customerMenu">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/ListCustomer">
+                            Müşteri Listesi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerListByCity">
+                            Müşterileri Şehre Göre Grupla
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Customer/CustomersByCityCount">
+                            Şehirlere Göre Müşteri Sayısı
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomersCityList">
+                            Tekrarsız Şehir Listesi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerListOrderByCustomerName">
+                            Ad Soyada Göre Sırala (A-Z)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerListOrderByDescendingBalance">
+                            Bakiyeye Göre Sırala (Azalan)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerGetByCity">
+                            Şehirde Müşteri Sorgulama
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerListExceptCity">
+                            Seçilen Şehir Hariç Müşteriler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerListWithDefaultIfEmpty">
+                            Varsayılan Kayıt (DefaultIfEmpty)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerListWithIndex">
+                            İndeksli Müşteri Listesi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerIntersectByCity">
+                            Ortak Müşteriler (Intersect)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerCastExample">
+                            Cast Örneği
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/CustomerOfTypeExample">
+                            OfType Örneği
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Customer/ParallelCustomers">
+                            Parallel LINQ
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Customer/CustomerListOrderByDescendingBalance">
-                <i class="fas fa-wallet menu-icon"></i>
-                <span class="menu-title">Müşteri Listesi (Bakiyeye Göre)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Customer/CustomerGetByCity">
-                <i class="fas fa-map-marker-alt menu-icon"></i>
-                <span class="menu-title">Şehre Göre Arama</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Product/ProductList">
+            <a class="nav-link" data-toggle="collapse" href="#productMenu" aria-expanded="false" aria-controls="productMenu">
                 <i class="fas fa-box menu-icon"></i>
-                <span class="menu-title">Ürün Listesi</span>
+                <span class="menu-title">Ürünler</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="productMenu">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/ListProduct">
+                            Tüm Ürünler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/CreateProductWithAttach">
+                            Bilgisayar Kategorisine Göre Ürün Ekle
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/First5Product">
+                            İlk 5 Ürün
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/Skip4Product">
+                            İlk 4 Ürünü Atla
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/ProductListWithCategory">
+                            Kategorileriyle Ürün Listesi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/ProductLongCount">
+                            Ürün Sayısı
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Product/First5Product">
-                <i class="fas fa-list-ol menu-icon"></i>
-                <span class="menu-title">Ürün Listesi (İlk 5 Ürün)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Product/Skip4Product">
-                <i class="fas fa-forward menu-icon"></i>
-                <span class="menu-title">Ürün Listesi (4 Ürün Atlatıldı)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Order/AsyncOrderList">
+            <a class="nav-link" data-toggle="collapse" href="#orderMenu" aria-expanded="false" aria-controls="orderMenu">
                 <i class="fas fa-shopping-cart menu-icon"></i>
-                <span class="menu-title">Sipariş Listesi</span>
+                <span class="menu-title">Siparişler</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="orderMenu">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Order/AsyncOrderList">
+                            Tüm Siparişler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Order/OrderListByStatus">
+                            Duruma Göre Siparişler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Order/OrderListSearch">
+                            Sipariş Ara
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Order/OrderListWithCustomerGroup">
+                            Müşteriye Göre Gruplandır
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Order/AllStockSmallerThen5">
+                            Stok Sayısı 5'ten Az Olan Ürünler
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Message/Index">
+                <i class="fas fa-comments menu-icon"></i>
+                <span class="menu-title">Mesajlar</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Order/AllStockSmallerThen5">
-                <i class="fas fa-box-open menu-icon"></i>
-                <span class="menu-title">Sipariş Listesi (Stok Sayısı < 5)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Order/OrderListByStatus">
-                <i class="fas fa-check-circle menu-icon"></i>
-                <span class="menu-title">Duruma Göre Sipariş Listesi</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Order/OrderListSearch">
-                <i class="fas fa-search menu-icon"></i>
-                <span class="menu-title">Sipariş Arama</span>
+            <a class="nav-link" href="/Activity/Index">
+                <i class="fas fa-calendar-check menu-icon"></i>
+                <span class="menu-title">Aktiviteler</span>
             </a>
         </li>
     </ul>

@@ -8,7 +8,22 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Yeni Sipariş Güncellene Sayfası</h4>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Sipariş Güncelle</h3>
+                        <p class="text-muted mb-0">
+                            Seçilen siparişin bilgilerini düzenleyerek değişiklikleri asenkron olarak kaydedebilirsiniz.
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="badge badge-warning p-2 mr-2">
+                            Update()
+                        </span>
+                        <span class="badge badge-info p-2">
+                            SaveChangesAsync()
+                        </span>
+                    </div>
+                </div>
                 <form class="forms-sample" method="post">
                     <input type="hidden" asp-for="OrderID" />
                     <div class="form-group">
@@ -47,6 +62,7 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Siparişi Güncelle</button>
+                    <a href="/Order/AsyncOrderList" class="btn btn-light">Vazgeç</a>
                 </form>
             </div>
         </div>

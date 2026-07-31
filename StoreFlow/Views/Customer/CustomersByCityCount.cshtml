@@ -10,13 +10,23 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Müşteri Şehir Listesi</h3>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Şehirlere Göre Müşteri Sayıları</h3>
+                        <p class="text-muted mb-0">
+                            Müşteriler şehir bilgilerine göre gruplanmış ve her şehirdeki toplam müşteri sayısı gösterilmektedir.
+                        </p>
+                    </div>
+                    <span class="badge badge-primary p-2">
+                        @Model.Count Şehir
+                    </span>
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Şehir Adı</th>
+                                <th style="width: 45%;">#</th>
+                                <th style="width: 45%;">Şehir Adı</th>
                                 <th>Müşteri Sayısı</th>
                             </tr>
                         </thead>

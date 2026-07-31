@@ -28,6 +28,12 @@ namespace StoreFlow.ViewComponents.StatisticsViewComponents
             ViewBag.GetIDIs4ProductName                         = _context.Products.Where(x => x.ProductID == 4).Select(x => x.Name).FirstOrDefault();
             ViewBag.StockCountBigger50AndSmaller100ProductCount = _context.Products.Where(x => x.Stock >= 50 && x.Stock <= 100).Count();
 
+            ViewBag.CustomerCount                               = _context.Customers.Count();
+            ViewBag.OrderCount                                  = _context.Orders.Count();
+            var highestBalanceCustomer                          = _context.Customers.OrderByDescending(x => x.Balance).FirstOrDefault();
+            ViewBag.HighestBalanceCustomer                      = highestBalanceCustomer == null ? "Müşteri Bulunamadı" : highestBalanceCustomer.Name + " " + highestBalanceCustomer.Surname;
+            ViewBag.HighestBalance                              = highestBalanceCustomer.Balance;
+
             return View();
         }
     }

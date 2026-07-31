@@ -1,28 +1,78 @@
 ﻿@model List<Category>
+
 @{
-    ViewData["Title"] = "Tersten Kategory Listesi";
-    Layout            = "~/Views/Layout/Index.cshtml";
+    ViewData["Title"] = "Tersten Kategori Listesi";
+    Layout = "~/Views/Layout/Index.cshtml";
 
     int count = 0;
 }
 
-<h3>İlk Kategori: @ViewBag.FirstCategory</h3>
-<h3>Filtrelenmiş İlk Kategori: @ViewBag.SingleOrDefaultCategory</h3>
-
+<div class="row mb-4">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card border-left border-primary">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted mb-1">First() Sonucu</p>
+                        <h4 class="mb-0">
+                            @ViewBag.FirstCategory
+                        </h4>
+                    </div>
+                    <span class="badge badge-primary p-2">
+                        First()
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card border-left border-success">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted mb-1">
+                            SingleOrDefault() Sonucu
+                        </p>
+                        <h4 class="mb-0">
+                            @ViewBag.SingleOrDefaultCategory
+                        </h4>
+                    </div>
+                    <span class="badge badge-success p-2">
+                        SingleOrDefault()
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Kategori Listesi</h3>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Tersten Kategori Listesi</h3>
+                        <p class="text-muted mb-0">
+                            Kategoriler CategoryID değerine göre sıralandıktan sonra
+                            Reverse() metodu kullanılarak ters çevrilmiştir.
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="badge badge-primary p-2 mr-2">
+                            Reverse()
+                        </span>
+                        <span class="badge badge-info p-2">
+                            @Model.Count Kategori
+                        </span>
+                    </div>
+                </div>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Kategori Adı</th>
+                                <th style="width:50%;">#</th>
+                                <th style="width:50%;">Kategori Adı</th>
                                 <th>Durum</th>
-                                <th>Sil</th>
-                                <th>Güncelle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,14 +82,15 @@
                                 <tr>
                                     <td>@count</td>
                                     <td>@category.Name</td>
-                                    <td><label class="badge @(category.Status ? "badge-success" : "badge-danger") badge-pill">@(category.Status ? "Aktif Kategori" : "Pasif Kategori")</label></td>
-                                    <td><a href="/Category/DeleteCategory/@category.CategoryID" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Category/UpdateCategory/@category.CategoryID" class="btn btn-warning">Güncelle</a></td>
+                                    <td>
+                                        <label class="badge @(category.Status ? "badge-success" : "badge-danger") badge-pill">
+                                            @(category.Status ? "Aktif Kategori" : "Pasif Kategori")
+                                        </label>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Category/CreateCategory" class="btn btn-primary">Yeni Kategori Girişi</a>
                 </div>
             </div>
         </div>

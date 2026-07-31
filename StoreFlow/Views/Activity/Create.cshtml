@@ -1,0 +1,45 @@
+﻿@model Activity
+@{
+    ViewData["Title"] = "Yeni Aktivite Ekle";
+    Layout            = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Yeni Aktivite Ekle</h3>
+                        <p class="text-muted mb-0">
+                            Günlük planınıza yeni bir aktivite eklemek için bilgileri doldurunuz.
+                        </p>
+                    </div>
+                    <span class="badge badge-primary p-2">
+                        Yeni Kayıt
+                    </span>
+                </div>
+                <form asp-controller="Activity" asp-action="Create" method="post" class="forms-sample">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="form-group">
+                        <label asp-for="Title">Aktivite Başlığı</label>
+                        <input asp-for="Title" class="form-control" placeholder="Aktivite başlığını giriniz" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Açıklama</label>
+                        <textarea asp-for="Description" class="form-control" rows="5" placeholder="Aktivite açıklamasını giriniz"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Time">Aktivite Saati</label>
+                        <input asp-for="Time" type="time" class="form-control" />
+                        <span asp-validation-for="Time" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Aktiviteyi Kaydet</button>
+                    <a href="/Activity/Index" class="btn btn-light">Vazgeç</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

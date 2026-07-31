@@ -10,18 +10,35 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Asenkron Sipariş Listesi</h3>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Tüm Siparişler</h3>
+                        <p class="text-muted mb-0">
+                            Siparişler asenkron olarak veritabanından getirilmekte ve liste halinde gösterilmektedir.
+                        </p>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <span class="badge badge-primary p-2 mr-2">
+                            ToListAsync()
+                        </span>
+
+                        <span class="badge badge-info p-2">
+                            @Model.Count Sipariş
+                        </span>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Ürün Adı</th>
-                                <th>Müşteri</th>
-                                <th>Sipariş Adet</th>
-                                <th>Birim Fiyat</th>
-                                <th>Toplam Fiyat</th>
-                                <th>Durum</th>
+                                <th style="width: 14%;">#</th>
+                                <th style="width: 14%;">Ürün Adı</th>
+                                <th style="width: 14%;">Müşteri</th>
+                                <th style="width: 14%;">Sipariş Adet</th>
+                                <th style="width: 14%;">Birim Fiyat</th>
+                                <th style="width: 14%;">Toplam Fiyat</th>
+                                <th style="width: 14%;">Durum</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>

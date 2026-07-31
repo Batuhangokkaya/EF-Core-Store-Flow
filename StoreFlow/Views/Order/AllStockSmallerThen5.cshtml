@@ -1,14 +1,25 @@
 ﻿@{
-    ViewData["Title"] = "Tüm Sipariş Adetleri 5 veya Daha Az mı?";
+    ViewData["Title"] = "Stok Sayısı 5'ten Az Olan Ürünler";
     Layout            = "~/Views/Layout/Index.cshtml";
 }
 
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="mb-1">Stok Sayısı 5'ten Az Olan Ürünler</h3>
+        <p class="text-muted mb-0">
+            All() metodu kullanılarak stok miktarı 5'ten az olan ürünler filtrelenerek listelenmektedir.
+        </p>
+    </div>
+    <div class="d-flex align-items-center">
+        <span class="badge badge-primary p-2 mr-2">
+            All()
+        </span>
+    </div>
+</div>
 <div class="row">
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Tüm Stoklar 5 ve 5'den Küçük mü?'</h4>
-                <br />
                 <div class="alert alert-success">@ViewBag.OrderStockCount</div>
             </div>
         </div>

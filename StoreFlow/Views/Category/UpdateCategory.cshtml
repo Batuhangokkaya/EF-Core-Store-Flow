@@ -8,7 +8,19 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Kategori Güncelleme Sayfası</h4>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h3 class="mb-1">Kategori Güncelle</h3>
+                        <p class="text-muted mb-0">
+                            Seçilen kategoriye ait bilgileri düzenleyerek değişiklikleri kaydedebilirsiniz.
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="badge badge-warning p-2">
+                            Güncelleme
+                        </span>
+                    </div>
+                </div>
                 <form class="forms-sample" method="post">
                     <input type="hidden" asp-for="CategoryID" />
                     <div class="form-group">
@@ -24,6 +36,7 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Kategoriyi Güncelle</button>
+                    <a href="/Category/CategoryList" class="btn btn-light">Vazgeç</a>
                 </form>
             </div>
         </div>
